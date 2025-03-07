@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MODEL_H_
+#define MODEL_H_
 #include "object.h"
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
@@ -52,7 +53,7 @@ private:
 	}
 };
 
-void Model::Draw(Shader* shader) {
+inline void Model::Draw(Shader* shader) {
 	if (visible) {
 		glm::mat4 model = glm::mat4(1.0f);
 		model = glm::translate(model, transforms.position);
@@ -78,7 +79,7 @@ void Model::Draw(Shader* shader) {
 	}
 }
 
-void Model::DrawDepth(Shader* shader) {
+inline void Model::DrawDepth(Shader* shader) {
 	if (visible) {
 		glm::mat4 model = glm::mat4(1.0f);
 		model = glm::translate(model, transforms.position);
@@ -96,7 +97,7 @@ void Model::DrawDepth(Shader* shader) {
 	}
 }
 
-void Model::DrawStencil(Shader* select_shader){
+inline void Model::DrawStencil(Shader* select_shader){
 	// Draw the outline
 	glm::mat4 model = glm::mat4(1.0f);
 	model = glm::translate(model, transforms.position);
@@ -114,7 +115,7 @@ void Model::DrawStencil(Shader* select_shader){
 	}
 }
 
-void Model:: loadModel(string path){
+inline void Model:: loadModel(string path){
 	Assimp::Importer import;
 	const aiScene* scene = import.ReadFile(path, aiProcess_Triangulate |
 		aiProcess_FlipUVs);
@@ -127,7 +128,7 @@ void Model:: loadModel(string path){
 	processNode(scene->mRootNode, scene);
 }
 
-void Model::processNode(aiNode* node, const aiScene* scene){
+inline void Model::processNode(aiNode* node, const aiScene* scene){
 	// process all the node’s meshes (if any)
 	for (unsigned int i = 0; i < node->mNumMeshes; i++){
 		aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
@@ -139,7 +140,7 @@ void Model::processNode(aiNode* node, const aiScene* scene){
 	}
 }
 
-Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene){
+inline Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene){
 	vector<Vertex> vertices;
 	vector<unsigned int> indices;
 	vector<Texture> textures;
@@ -193,7 +194,7 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene){
 
 unsigned int TextureFromFile(const char* path, const string& directory, bool gamma = false);
 
-vector<Texture> Model::loadMaterialTextures(aiMaterial* mat, aiTextureType type, string typeName)
+inline vector<Texture> Model::loadMaterialTextures(aiMaterial* mat, aiTextureType type, string typeName)
 {
 	vector<Texture> textures;
 	for (unsigned int i = 0; i < mat->GetTextureCount(type); i++)
@@ -224,7 +225,7 @@ vector<Texture> Model::loadMaterialTextures(aiMaterial* mat, aiTextureType type,
 	return textures;
 }
 
-unsigned int TextureFromFile(const char* path, const string& directory, bool gamma)
+inline unsigned int TextureFromFile(const char* path, const string& directory, bool gamma)
 {
 	string filename = string(path);
 	filename = directory + '/' + filename;
@@ -270,3 +271,5 @@ unsigned int TextureFromFile(const char* path, const string& directory, bool gam
 
 	return textureID;
 }
+
+#endif

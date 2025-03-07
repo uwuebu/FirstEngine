@@ -28,19 +28,24 @@
     <ClCompile Include="..\..\..\..\..\..\..\libraries\OpenGL\Include\imgui\imgui_widgets.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="image.cpp" />
+    <ClCompile Include="light.cc" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="scene.cc" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\..\..\libraries\OpenGL\Include\custom\camera.h" />
     <ClInclude Include="..\..\..\..\..\..\..\libraries\OpenGL\Include\SHADER\shader_c.h" />
+    <ClInclude Include="input_handler.h" />
     <ClInclude Include="light.h" />
     <ClInclude Include="mesh.h" />
     <ClInclude Include="mine_imgui.h" />
     <ClInclude Include="model.h" />
     <ClInclude Include="object.h" />
+    <ClInclude Include="renderer.h" />
     <ClInclude Include="scene.h" />
     <ClInclude Include="skybox.h" />
     <ClInclude Include="stb_image.h" />
+    <ClInclude Include="window.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="debug_quad.frag" />
