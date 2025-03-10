@@ -60,6 +60,12 @@
     <ClCompile Include="light.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="renderer.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mine_imgui.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\..\..\libraries\OpenGL\Include\SHADER\shader_c.h">

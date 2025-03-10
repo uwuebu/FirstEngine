@@ -30,6 +30,8 @@
     <ClCompile Include="image.cpp" />
     <ClCompile Include="light.cc" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="mine_imgui.cc" />
+    <ClCompile Include="renderer.cc" />
     <ClCompile Include="scene.cc" />
   </ItemGroup>
   <ItemGroup>

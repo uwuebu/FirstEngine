@@ -13,14 +13,12 @@
 
 #include "input_handler.h"
 
-float lastX = 400, lastY = 300;
-
 class Window {
   GLFWwindow* window_;
   int screenWidth;
   int screenHeight;
   InputHandler* input_handler_;
-
+  float lastX = 400, lastY = 300;
 public:
   Window(int gl_version_major, int gl_version_minor) {
     // GLFW SET UP
@@ -92,21 +90,21 @@ private:
 
       if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_RIGHT) == GLFW_PRESS) {
         if (!mouseHeld) {
-          lastX = xpos;
-          lastY = ypos;
+          win->lastX = xpos;
+          win->lastY = ypos;
           mouseHeld = true;
           return;
         }
-        float xoffset = xpos - lastX;
-        float yoffset = lastY - ypos;
+        float xoffset = xpos - win->lastX;
+        float yoffset = win->lastY - ypos;
         win->input_handler_->ProcessMouseMovement(xoffset, yoffset, true);
       }
       else {
         mouseHeld = false;
       }
 
-      lastX = xpos;
-      lastY = ypos;
+      win->lastX = xpos;
+      win->lastY = ypos;
     }
   }
 
